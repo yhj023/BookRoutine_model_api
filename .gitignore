@@ -1,0 +1,33 @@
+# 가상환경
+venv/
+
+# 파이썬 캐시
+__pycache__/
+*.pyc
+
+# 대용량 모델/데이터 파일 (모델은 구글드라이브로 따로 공유)
+checkpoints/
+models/assets/*.task
+processed/
+processed_*/
+raw_labels*.csv*.pt
+
+# 기타 모델 파일
+*.pth
+*.onnx
+*.task
+*.h5
+
+# 원본 데이터셋 (경로만 다르지 각자 로컬에 있음)
+*.jpg
+*.mat
+
+# 데이터셋 및 예측 결과물
+data/
+*.csv
+*.json
+*.jpg
+*.png
+
+# 환경변수 및 키값
+.env
