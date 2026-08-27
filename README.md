@@ -100,9 +100,7 @@ python3 prepare_data.py \
 python3 models/gaze_model.py
 ```
 
-정상이면 `출력 shape: torch.Size([4, 2])`가 찍혀. (이 환경에서는 ImageNet 사전학습
-가중치 다운로드 서버도 막혀 있어서 `--no-pretrained` 옵션으로 구조만 검증했어 —
-실제 개발 환경에서는 옵션 없이 실행하면 사전학습 가중치가 정상적으로 받아질 거야.)
+정상 출력:  `출력 shape: torch.Size([4, 2])`
 
 
 
