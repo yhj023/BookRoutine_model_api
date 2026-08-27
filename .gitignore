@@ -5,8 +5,8 @@ venv/
 __pycache__/
 *.pyc
 
-# 대용량 모델/데이터 파일 (모델은 구글드라이브로 따로 공유)
-checkpoints/
+# 대용량 모델/데이터 파일 (모델은 구글드라이브로 따로 공유 - README.md)
+model_weights/
 models/assets/*.task
 processed/
 processed_*/

@@ -9,3 +9,9 @@ tqdm
 fastapi
 uvicorn
 python-multipart
+httpx
+keybert
+sentence-transformers
+konlpy
+ultralytics
+opencv-python

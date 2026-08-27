@@ -56,7 +56,7 @@ class GazeService:
 _service: GazeService | None = None
 
 
-def get_service(checkpoint_path: str = "checkpoints/best_model.pt") -> GazeService:
+def get_gaze_service(checkpoint_path: str = "model_weights/gaze/best_model.pt") -> GazeService:
     """이미 로드돼 있으면 그대로 반환, 처음이면 그때 한 번만 로드."""
     global _service
     if _service is None:

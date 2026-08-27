@@ -1,7 +1,4 @@
-# Gaze Estimation Inference API Server
-
-## 폴더 구조
-
+# Model Inference API Server
 
 ## 모델 프로젝트 실행을 위한 세팅 (필수)
 프로젝트 실행 시 해당 명령어만 실행하시면 됩니다. 
@@ -11,18 +8,23 @@ python -m venv venv
 venv\Scripts\activate          (윈도우)
 pip install -r requirements.txt 
 
+2. 모델 파일 가져오기 (직접)
+- 모델 파일은 팀 공용 구글 드라이브의 models_all 폴더로 올려놓겠습니다. 
+- 폴더를 받아와 아래 폴더 구조를 참고하여 위치시켜주세요. 
+(프로젝트 최상위 폴더 아래 필요한 폴더를 생성) 
 
-2. mediapipe 모델 설치
-```bash
-(cmd)
-mkdir models\assets
-curl -L -o "models/assets/face_landmarker.task" "https://storage.googleapis.com/mediapipe-models/face_landmarker/face_landmarker/float16/1/face_landmarker.task"
-
-(PowerShell이라면 아래 명령어를 실행)
-mkdir -p models/assets 
-curl -L -o models/assets/face_landmarker.task \
-  https://storage.googleapis.com/mediapipe-models/face_landmarker/face_landmarker/float16/1/face_landmarker.task
-```
+[모델 폴더 구조]
+gaze-model/                           ←  최상위
+└── model_weights/                    ←  통합 폴더
+    ├── gaze/
+    │   └── best_model.pt
+    ├── summary/
+    │   └── kobart_keybert_summary_v1/
+    │       ├── model.safetensors
+    │       ├── config.json
+    │       └── ...
+    └── focus_yolo/                   
+        └── best.pt
 
 3. Run Server 
 ```bash
@@ -35,18 +37,24 @@ uvicorn inference.api_server:app --host 0.0.0.0 --port 8000
 [GazeService] MediaPipe 준비 완료 — 모델 로딩 끝, 요청 받을 준비 됐음
 
 
+4. 테스트
 테스트 방법입니다. 
 - http://localhost:8000/predict (postman 모델 api 테스트)
 - http://localhost:8000/docs (swagger 테스트 방법)
 
+/gaze/predict는 POST 요청만 받고 다른 형식의 요청 (GET 등을 보내면 에러가 발생할 수 있으므로 스웨거 등에서 테스트 시 첨부 파일을 포함한 POST 요청을 보내주세요. )
 테스트 시 직접 인물 이미지 파일(.jpg, .png 등)을 첨부합니다.
 
+- 실행 중 에러 발생 시 반드시 전달해주세요. 
 
 
 
+5. 주의 
+- 설치 파일 중 konlpy는 Java(JDK)가 깔려있어야 동작하므로 Java 설치가 필요합니다. (이미 깔려 있다면 생략)
 
 
-## 1. 환경 설치 - 여기부터는 학습 과정 
+----------------------------------------------------
+## 1. 환경 설치 - 여기부터는 학습 과정이므로 생략
 
 python -m venv venv
 venv\Scripts\activate          (윈도우)
